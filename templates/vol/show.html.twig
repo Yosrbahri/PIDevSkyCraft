@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vol{% endblock %}
+
+{% block body %}
+{{parent()}}
+     <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+
+
+    <div class="row">
+
+    <div class="col-12">
+    <div class="card-box">
+   
+
+    <p class="text-muted font-14 m-b-20">
+
+    <h4 class="m-t-0 header-title">Detail vol #{{vol.id}}</h4>
+    <div class="card">
+        <div class="card-body">
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vol.id }}</td>
+            </tr>
+            <tr>
+                <th>DateArrivee</th>
+                <td>{{ vol.dateArrivee ? vol.dateArrivee|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateDepart</th>
+                <td>{{ vol.dateDepart ? vol.dateDepart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LieuArrive</th>
+                <td>{{ vol.lieuArrive }}</td>
+            </tr>
+            <tr>
+                <th>LieuDepart</th>
+                <td>{{ vol.lieuDepart }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ vol.montant }}</td>
+            </tr>
+            <tr>
+                <th>FactureId</th>
+                <td>{{ vol.factureId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vol_index') }}">back to list</a>
+
+    <a href="{{ path('app_vol_edit', {'id': vol.id}) }}">edit</a>
+
+    {{ include('vol/_delete_form.html.twig') }}
+{% endblock %}

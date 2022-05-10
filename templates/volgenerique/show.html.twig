@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Volgenerique{% endblock %}
+
+{% block body %}
+{{parent()}}
+    <h1>Volgenerique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ volgenerique.id }}</td>
+            </tr>
+            <tr>
+                <th>HeureDepart</th>
+                <td>{{ volgenerique.heureDepart ? volgenerique.heureDepart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heurearrivee</th>
+                <td>{{ volgenerique.heurearrivee ? volgenerique.heurearrivee|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LieuArrive</th>
+                <td>{{ volgenerique.lieuArrive }}</td>
+            </tr>
+            <tr>
+                <th>LieuDepart</th>
+                <td>{{ volgenerique.lieuDepart }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ volgenerique.montant }}</td>
+            </tr>
+            <tr>
+                <th>FactureId</th>
+                <td>{{ volgenerique.factureId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_volgenerique_index') }}">back to list</a>
+
+    <a href="{{ path('app_volgenerique_edit', {'id': volgenerique.id}) }}">edit</a>
+
+    {{ include('volgenerique/_delete_form.html.twig') }}
+{% endblock %}

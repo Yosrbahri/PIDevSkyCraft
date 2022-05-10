@@ -1,0 +1,68 @@
+{% extends 'base_front.html.twig' %}
+
+{% block body %}
+
+<!-- Offers -->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1 temp_col"></div>
+				
+				<div class="col-lg-12">
+					<!-- Offers Grid -->
+
+					<div class="offers_grid">
+					
+						<!-- Offers Item -->
+                        {% for vol in vols %}
+						<div class="offers_item rating_4" style="margin-bottom:20px;">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@kensuarez -->
+										<div class="offers_image_background" style="background-image:url({{asset('uploads/images/vols/'~vol.image)}})"></div>
+										<div class="offer_name" style="width:241px; !important"><a href="{{path('app_vol_reservation',{'id': vol.id})}}">{{vol.lieuDepart}}->{{vol.lieuArrive}}</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">${{vol.montant}}<span>per person</span></div>
+										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+										</div>
+										<p class="offers_text">.</p>
+										<div class="button home_slider_button">
+										<div class="button_bcg"></div>
+										<a href="{{path('app_vol_reservation',{'id': vol.id})}}">Book<span></span><span></span><span></span></a></div>
+										
+										<div class="offer_reviews">
+											<div class="offer_reviews_content">
+												<div class="offer_reviews_title">Places:</div>
+												<div class="offer_reviews_subtitle">{{vol.nbrdispo - vol.nbrreserve }} available places</div>
+											</div>
+											<div class="offer_reviews_rating text-center"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+						
+
+						
+
+						
+                    </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+{% endblock %}

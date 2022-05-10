@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+{{parent()}}
+   <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+
+
+    <div class="row">
+
+    <div class="col-12">
+    <div class="card-box">
+    <div class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+            <i class="mdi mdi-dots-vertical"></i>
+        </a>
+        
+    </div>
+
+    <p class="text-muted font-14 m-b-20">
+
+        <a href="{{ path('app_reservation_new') }}">
+            <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Ajouter un reservation</button>
+
+        </a>
+    <h4 class="m-t-0 header-title">List Des Vols</h4>
+<div class="card">
+        <div class="card-body">
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateReservation</th>
+                <th>Iduser</th>
+                <th>Nbr</th>
+                <th>VolId</th>
+               
+                 <th >Modifier</th>
+                <th >Supprimer</th>
+                <th >Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateReservation ? reservation.dateReservation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.iduser }}</td>
+                <td>{{ reservation.nbr }}</td>
+                <td>{{ reservation.volId }}</td>
+                
+                {#<td>
+                    <a class="btn btn-info " href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                </td>#}
+                <td>
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}"> <i class="fa fa-pencil"></i></a>
+                </td>
+
+                <td>
+                    <a href="{{ path('app_reservation_delete', {'id': reservation.id}) }}"><i class="fa fa-trash" ></i> </a>
+                <td>
+                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-list" style="color:#0eac5c;font-size:20px"></i> </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ 
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block body %}
+{{parent()}}
+   <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+
+
+    <div class="row">
+
+    <div class="col-12">
+    <div class="card-box">
+    <div class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+            <i class="mdi mdi-dots-vertical"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item">Action</a>
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+        </div>
+    </div>
+
+    <p class="text-muted font-14 m-b-20">
+
+        <a href="{{ path('app_facture_new') }}">
+            <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Ajouter une facture</button>
+
+        </a>
+    <h4 class="m-t-0 header-title">List Des Factures</h4>
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Nbr</th>
+                <th>PrixTotal</th>
+                <th>PrixUnitaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+                <td>{{ facture.designation }}</td>
+                <td>{{ facture.nbr }}</td>
+                <td>{{ facture.prixTotal }}</td>
+                <td>{{ facture.prixUnitaire }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
